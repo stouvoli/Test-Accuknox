@@ -1,0 +1,28 @@
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+name: Semgrep Findings
+jobs:
+  semgrep-sast:
+    name: Semgrep-SAST
+    runs-on: ubuntu-20.04
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Semgrep scan
+        run: |
+          # Run Semgrep scan and store the output in JSON
+          semgrep scan --json --json-output /tmp/semgrep.json
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+
+      - name: Upload report to AccuKnox
+        run: |
+          curl --location --request POST \
+          "https://cspm.stage.accuknox.com/api/v1/artifact/?tenant_id=${{ secrets.ACCUKNOX_TENANT_ID }}&data_type=SG&save_to_s3=true&label_id=${{ secrets.ACCUKNOX_LABEL }}" \
+          --header "Tenant-Id: ${{ secrets.ACCUKNOX_TENANT_ID }}" \
+          --header "Authorization: Bearer ${{ secrets.ACCUKNOX_TOKEN }}" \
+          --form "file=@/tmp/semgrep.json"
