@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.servlet.http.HttpServletRequest;
 
+// Commentaires
 public class UserDAO {
 
     public void unsafeQuery(HttpServletRequest request) throws Exception {
