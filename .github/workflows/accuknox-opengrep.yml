@@ -18,9 +18,9 @@ jobs:
       - name: "Run AccuKnox SAST: Opengrep"
         uses: accuknox/sast-scan-opengrep-action@1.0.0
         with:
-          accuknox_endpoint: "${{ secrets.ACCUKNOX_ENDPOINT }}"
-          accuknox_tenant: "${{ secrets.ACCUKNOX_TENANT }}"
-          accuknox_token: "${{ secrets.ACCUKNOX_ENDPOINT }}"
-          accuknox_label: "${{ secrets.ACCUKNOX_LABEL }}"
+          accuknox_endpoint: "cspm.demo.accuknox.com"
+          accuknox_tenant: "6139"
+          accuknox_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUwMTAwNzI0LCJqdGkiOiI0NjhmY2QyYTAwOTY0ZmUxOGQ0ZjlmZmUzYzhiN2U4YSIsImlzcyI6ImNzcG0uZGVtby5hY2N1a25veC5jb20ifQ.XS98RDcVVWPHkPzPvU0YcC6I1IaWn41PyJg9f6F-ghuOZmlPZ6ICEN35rgIDwUX_S88PI6NGi5zMRJraPBVeqsvN-DhdOSm__9dW83GwkqGHi46hlqCz7OTxy5irlr5d8d_-ydV1fjp3qRaCbufULyfoI--mw4HTz1RElC1MeUhmU8tjsQstbewV1msE8H9smLKXv877JiVRK2H4R1Q1ZfW9doE-_9IjyB003gRfvJw2S2ZwdkoFypYmW7DWkXG8brlwsUUxeCeDroprEI4s8zos7UpWsaXGafOPqEzaNr1f29VTM3mcnKd-VZq-5EnIL56NWE1BpKq9XeSxUUExqg"
+          accuknox_label: "stouvoli"
           input_soft_fail: true
           upload_artifact: true
